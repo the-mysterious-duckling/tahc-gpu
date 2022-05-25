@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
@@ -27,6 +28,7 @@ const Login = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
+        toast.success(`You logged in with ${data.email} successfully!`)
     }
 
     if (user || userG) {
