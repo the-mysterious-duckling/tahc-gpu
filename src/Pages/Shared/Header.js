@@ -38,9 +38,14 @@ const Header = () => {
                     {headerItems}
                 </ul>
             </div>
-            <div class="navbar-end">
-                <button onClick={() => navigate('/dashboard')} class="btn">Dashboard</button>
-            </div>
+            {
+                user ?
+                    <div class="navbar-end">
+                        <button onClick={() => navigate('/dashboard')} class="btn">Dashboard</button>
+                    </div> :
+                    <div class="navbar-end">
+                    </div>
+            }
         </div>
     );
 };
