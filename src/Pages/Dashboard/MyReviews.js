@@ -58,7 +58,7 @@ const MyReviews = () => {
             })
     }
     return (
-        <div>
+        <div className='border rounded-lg shadow-xl mx-auto mt-8 p-10'>
             <h2 className='text-2xl mx-12'>Add a Review</h2>
             <div className="card-body">
                 <form onSubmit={handleSubmit(onSubmit)}>

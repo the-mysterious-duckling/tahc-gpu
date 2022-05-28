@@ -14,7 +14,7 @@ const Blogs = () => {
                 <div className="card bg-base-100 shadow-xl">
                     <div className="card-body">
                         <h2 className="card-title text-secondary font-bold mx-auto">What are the different ways to manage a state in a React application?</h2>
-                        <p className='text-center'>There are four main types of states to properly manage in React apps. They are: local state, global state, server state, url state
+                        <p className='text-center'>There are four main types of states to properly manage states in React apps. They are: local state, global state, server state, url state
                         </p>
                     </div>
                 </div>
