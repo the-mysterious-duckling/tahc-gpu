@@ -15,7 +15,8 @@ const IndexDash = () => {
             phone: parseInt(data.phone),
             img: data.imgUrl
         }
-        const url = `https://tahc-server-v-01.herokuapp.com/updateuser/${user.email}`
+        console.log(userData)
+        const url = `http://localhost:1000/updateuser/${user.email}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -27,11 +28,11 @@ const IndexDash = () => {
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {
-                    toast.success(`Added ${data.name} to database successfully!`)
+                    toast.success(`Added to database successfully!`)
                     reset()
                 }
                 else {
-                    toast.error(`Failed to add ${data.name}`)
+                    toast.error(`Failed to add Please reload and log in again and try`)
                 }
             })
     }

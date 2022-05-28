@@ -6,7 +6,6 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { FaSkullCrossbones, FaPaypal } from 'react-icons/fa';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
-import Dashboard from './Dashboard';
 import toast from 'react-hot-toast';
 import { signOut } from 'firebase/auth';
 
@@ -48,8 +47,8 @@ const MyOrders = () => {
                             <th>User</th>
                             <th>Email</th>
                             <th>Item</th>
-                            <th>Status</th>
                             <th>Payment</th>
+                            <th></th>
                             <th>Terminate Order</th>
                         </tr>
                     </thead>
@@ -61,9 +60,10 @@ const MyOrders = () => {
                                     <td>{b.name}</td>
                                     <td>{b.email}</td>
                                     <td>{b.itemName}</td>
-                                    <td>Unpaid</td>
-                                    <td>
-                                        <Link to={`/dashboard/pay/${b._id}`}><button className='btn btn-info'><FaPaypal /> <span className='ml-2'>Pay</span></button></Link></td>
+                                    <td>{(b.price && !b.paid) &&
+                                        <Link to={`/dashboard/pay/${b._id}`}><button className='btn btn-info'><FaPaypal></FaPaypal> Pay</button></Link>}</td>
+                                    <td>{(b.price && b.paid) &&
+                                        <span className='text-success'>Paid</span>}</td>
                                     <td><label onClick={() => setBookingDelete(b)} for="delete-confirmation-modal" class="btn btn-error"><FaSkullCrossbones /> <span className='ml-2'>Cancel</span></label></td>
                                 </tr>)
                         }

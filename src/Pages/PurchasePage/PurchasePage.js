@@ -39,6 +39,7 @@ const PurchasePage = () => {
             address: data.target.address.value,
             quantity: quantity,
             itemName: product.name,
+            price: product.price
         }
         fetch('https://tahc-server-v-01.herokuapp.com/bookings', {
             method: 'POST',
