@@ -15,6 +15,8 @@ import IndexDash from './Pages/Dashboard/IndexDash';
 import MyOrders from './Pages/Dashboard/MyOrders';
 import MyReviews from './Pages/Dashboard/MyReviews';
 import Portfolio from './Pages/Portfolio/Portfolio';
+import AddProduct from './Pages/Dashboard/AddProduct';
+import ManageProducts from './Pages/Dashboard/ManageProducts';
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
           <Route index element={<IndexDash></IndexDash>}></Route>
           <Route path='orders' element={<MyOrders></MyOrders>}></Route>
           <Route path='reviews' element={<MyReviews></MyReviews>}></Route>
+          <Route path='addproduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='manageproduct' element={<ManageProducts></ManageProducts>}></Route>
+          <Route path='payment/:id' element={<MyReviews></MyReviews>}></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>

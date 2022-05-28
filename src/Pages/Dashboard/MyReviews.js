@@ -25,20 +25,6 @@ const MyReviews = () => {
             userRating: data.rating,
             item: data.item
         }
-        console.log(reviewData)
-        /* fetch('http://localhost:1000/bookings', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(reviewData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    toast.success('Booking Placed Successfully')
-                }
-            }) */
         fetch('http://localhost:1000/reviews', {
             method: 'POST',
             headers: {

@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { FaSkullCrossbones, FaPaypal } from 'react-icons/fa';
+import DeleteConfirmationModal from './DeleteConfirmationModal';
+import Dashboard from './Dashboard';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
     const { email } = user
-    const { data: bookings, isLoading } = useQuery('bookings', () =>
+
+    const [bookingDelete, setBookingDelete] = useState(null);
+
+    const { data: bookings, isLoading, refetch } = useQuery('bookings', () =>
         fetch(`http://localhost:1000/bookings/${email}`).then(res => res.json())
     )
 
@@ -42,13 +47,20 @@ const MyOrders = () => {
                                     <td>{b.itemName}</td>
                                     <td>Unpaid</td>
                                     <td>
-                                        <Link to={`/dashboard/pay/${b._id}`}><button className='btn btn-secondary'><FaPaypal /> <span className='ml-2'>Pay</span></button></Link></td>
-                                    <td><button className='btn btn-outline'><FaSkullCrossbones /> <span className='ml-2'>Cancel</span></button></td>
+                                        <Link to={`/dashboard/pay/${b._id}`}><button className='btn btn-info'><FaPaypal /> <span className='ml-2'>Pay</span></button></Link></td>
+                                    <td><label onClick={() => setBookingDelete(b)} for="delete-confirmation-modal" class="btn btn-error"><FaSkullCrossbones /> <span className='ml-2'>Cancel</span></label></td>
                                 </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            {
+                bookingDelete && <DeleteConfirmationModal
+                    bookingDelete={bookingDelete}
+                    setBookingDelete={setBookingDelete}
+                    refetch={refetch}
+                ></DeleteConfirmationModal>
+            }
         </div>
     );
 };

@@ -56,8 +56,8 @@ const PurchasePage = () => {
     }
     return (
         <>
-            <div className='border'>
-                <h3 className='text-lg text-right text-accent mr-4'>You are:</h3>
+            <div>
+                <h3 className='text-lg text-right text-accent mr-4'>You are requesting as:</h3>
                 <p className='text-right text-accent mr-2'>{user.displayName}</p>
                 <p className='text-right text-accent mr-2'>{user.email}</p>
             </div>
@@ -75,12 +75,19 @@ const PurchasePage = () => {
                 <div class="card w-1/2 bg-base-100 shadow-xl mx-auto p-8">
                     <h3 className="font-bold text-center text-xl">Your details</h3>
                     <form className='grid grid-cols-1 gap-4 mt-2 justify-items-center' onSubmit={handleSubmit}>
+                        {/* Item */}
                         <input type="text" readOnly value={product.name} className="input input-bordered w-full max-w-xs" />
+                        {/* Name */}
                         <input type="text" name='name' readOnly value={user?.displayName || ""} placeholder="Your name" className="input input-bordered w-full max-w-xs" />
+                        {/* Email */}
                         <input type="email" name='email' readOnly value={user?.email || ""} placeholder="Your email" className="input input-bordered w-full max-w-xs" />
+                        {/* Number */}
                         <input required type="number" name='phone' placeholder="Your phone number (Must be Eleven Digits)" className="input input-bordered w-full max-w-xs" />
+                        {/* Quantity */}
                         <input required type="number" name='quantity' placeholder={`Item Quantity. (Minimum:${minimumOrderQuantity}, Maximum:${inStock})`} className="input input-bordered w-full max-w-xs" />
+                        {/* Address */}
                         <input required type="text" name='address' placeholder="Your address" className="input input-bordered w-full max-w-xs" />
+                        {/* Submit */}
                         <input type="submit" placeholder="Submit" className="input input-bordered w-full max-w-xs btn btn-primary text-violet-300 font-bold bg-gradient-to-r from-neutral to-neutral" />
                     </form>
                 </div>
