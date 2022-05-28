@@ -64,16 +64,16 @@ const PurchasePage = () => {
             </div>
             <h1 className='text-3xl text-center mr-5'>Requesting for : {product.name}</h1>
             <div className='flex gap-8 mx-8 my-4'>
-                <div class="card w-1/2 bg-base-100 shadow-xl mx-auto">
-                    <figure class="px-10 pt-10">
-                        <img src={product.img} alt='gpu' class="rounded-xl" />
+                <div className="card w-1/2 bg-base-100 shadow-xl mx-auto">
+                    <figure className="px-10 pt-10">
+                        <img src={product.img} alt='gpu' className="rounded-xl" />
                     </figure>
-                    <div class="card-body items-center text-center">
-                        <h2 class="card-title">Price: ${product.price}</h2>
+                    <div className="card-body items-center text-center">
+                        <h2 className="card-title">Price: ${product.price}</h2>
                         <p>{product.description}</p>
                     </div>
                 </div>
-                <div class="card w-1/2 bg-base-100 shadow-xl mx-auto p-8">
+                <div className="card w-1/2 bg-base-100 shadow-xl mx-auto p-8">
                     <h3 className="font-bold text-center text-xl">Your details</h3>
                     <form className='grid grid-cols-1 gap-4 mt-2 justify-items-center' onSubmit={handleSubmit}>
                         {/* Item */}

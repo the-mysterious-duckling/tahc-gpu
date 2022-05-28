@@ -12,17 +12,17 @@ const Custom1Recently = () => {
             <h1 className='text-2xl text-neutral text-center mb-2'>The latest added GPU</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8'>
                 {
-                    parts.slice(-3).map(part => <div class="card w-48 bg-base-100 shadow-xl">
+                    parts.slice(-3).map(part => <div className="card w-48 bg-base-100 shadow-xl">
                         <figure><img src={part.img} alt="Shoes" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title">
+                        <div className="card-body">
+                            <h2 className="card-title">
                                 {part.name}
-                                <div class="badge badge-green">NEW!</div>
+                                <div className="badge badge-green">NEW!</div>
                             </h2>
                             <p>{part.description.slice(0, 50)} ...</p>
-                            <div class="card-actions justify-end">
-                                <div class="badge badge-outline">Stock:</div>
-                                <div class="badge badge-outline">{part.inStock} items</div>
+                            <div className="card-actions justify-end">
+                                <div className="badge badge-outline">Stock:</div>
+                                <div className="badge badge-outline">{part.inStock} items</div>
                             </div>
                         </div>
                     </div>)

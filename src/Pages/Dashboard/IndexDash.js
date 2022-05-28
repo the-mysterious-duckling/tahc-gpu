@@ -16,7 +16,7 @@ const IndexDash = () => {
             img: data.imgUrl
         }
         console.log(userData)
-        const url = `http://localhost:1000/updateuser/${user.email}`
+        const url = `https://tahc-server-v-01.herokuapp.com/updateuser/${user.email}`
         fetch(url, {
             method: 'PUT',
             headers: {

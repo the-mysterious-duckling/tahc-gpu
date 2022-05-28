@@ -64,7 +64,7 @@ const MyOrders = () => {
                                         <Link to={`/dashboard/pay/${b._id}`}><button className='btn btn-info'><FaPaypal></FaPaypal> Pay</button></Link>}</td>
                                     <td>{(b.price && b.paid) &&
                                         <span className='text-success'>Paid</span>}</td>
-                                    <td><label onClick={() => setBookingDelete(b)} for="delete-confirmation-modal" class="btn btn-error"><FaSkullCrossbones /> <span className='ml-2'>Cancel</span></label></td>
+                                    <td><label onClick={() => setBookingDelete(b)} htmlFor="delete-confirmation-modal" className="btn btn-error"><FaSkullCrossbones /> <span className='ml-2'>Cancel</span></label></td>
                                 </tr>)
                         }
                     </tbody>

@@ -14,7 +14,7 @@ const CheckoutForm = ({ booking }) => {
     const { price } = booking
 
     useEffect(() => {
-        fetch('http://localhost:1000/payment-create-intent', {
+        fetch('https://tahc-server-v-01.herokuapp.com/payment-create-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
