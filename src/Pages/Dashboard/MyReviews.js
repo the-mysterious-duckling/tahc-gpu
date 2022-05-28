@@ -12,7 +12,7 @@ const MyReviews = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     // React query to load all the services name
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts').then(res => res.json()))
+    const { data: parts, isLoading } = useQuery('parts', () => fetch('https://tahc-server-v-01.herokuapp.com/parts').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -25,7 +25,7 @@ const MyReviews = () => {
             userRating: data.rating,
             item: data.item
         }
-        fetch('http://localhost:1000/reviews', {
+        fetch('https://tahc-server-v-01.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

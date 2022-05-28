@@ -1,14 +1,7 @@
 import React from 'react';
 import bgImg from '../../assets/images/ezgi.gif'
-import { FaBeer } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 
 const BusinessSummary = () => {
-    const navigate = useNavigate()
-    const handleBtn = (e) => {
-        e.preventDefault()
-        navigate('/portfolio')
-    }
     return (
         <div className='my-32'
             style={{
@@ -19,14 +12,10 @@ const BusinessSummary = () => {
                 <div class="hero-content text-center text-neutral-content">
                     <div class="max-w-md">
                         <h1 class="mb-5 text-5xl font-bold text-neutral">Wholesale</h1>
-                        <p class="mb-5 text-gray-800">We served 200+ customers</p>
+                        <p class="mb-5 text-xl text-gray-800">We served 200+ customers</p>
                         <p class="mb-5 text-gray-800">We have 20 users</p>
                         <p class="mb-5 text-gray-800">120M+ Annual revenue </p>
                         <p class="mb-5 text-gray-800">MIT licensed </p>
-                        <button onClick={handleBtn}
-                            className='btn btn-primary'>
-                            <h3 className='flex text-white'> Lets go for a <FaBeer className='ml-1' /> ? </h3>
-                        </button>
                     </div>
                 </div>
             </div>

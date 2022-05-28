@@ -12,7 +12,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     // React query to load all the services name
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts', {
+    const { data: parts, isLoading } = useQuery('parts', () => fetch('https://tahc-server-v-01.herokuapp.com/parts', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -33,7 +33,7 @@ const AddProduct = () => {
             description: data.description,
         }
         console.log(productData)
-        fetch('http://localhost:1000/parts', {
+        fetch('https://tahc-server-v-01.herokuapp.com/parts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -5,7 +5,7 @@ import Review from './Review';
 import { FaPaperclip } from 'react-icons/fa';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery('review', () => fetch('http://localhost:1000/reviews').then(res => res.json()))
+    const { data: reviews, isLoading } = useQuery('review', () => fetch('https://tahc-server-v-01.herokuapp.com/reviews').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>

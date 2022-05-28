@@ -4,14 +4,14 @@ import Loading from '../Shared/Loading';
 import Part from './Part';
 
 const Parts = () => {
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts').then(res => res.json()))
+    const { data: parts, isLoading } = useQuery('parts', () => fetch('https://tahc-server-v-01.herokuapp.com/parts').then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
     }
     // const [parts, setParts] = useState([]);
     // useEffect(() => {
-    //     fetch('http://localhost:1000/parts')
+    //     fetch('https://tahc-server-v-01.herokuapp.com/parts')
     //         .then(res => res.json())
     //         .then(data => setParts(data))
     // }, [])

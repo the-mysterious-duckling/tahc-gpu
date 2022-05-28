@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 const OneUser = ({ user, index, refetch }) => {
     const { email, role } = user
     const handleRemove = () => {
-        fetch(`http://localhost:1000/delete/user/${email}`, {
+        fetch(`https://tahc-server-v-01.herokuapp.com/delete/user/${email}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
             if (data.deletedCount > 0) {
@@ -15,7 +15,7 @@ const OneUser = ({ user, index, refetch }) => {
     }
     /* Admin Handling */
     const makeAdmin = () => {
-        fetch(`http://localhost:1000/user/admin/${email}`, {
+        fetch(`https://tahc-server-v-01.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

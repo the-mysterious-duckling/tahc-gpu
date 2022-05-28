@@ -4,7 +4,7 @@ import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import Loading from '../Shared/Loading';
 
 const OneLineChart = () => {
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts').then(res => res.json()))
+    const { data: parts, isLoading } = useQuery('parts', () => fetch('https://tahc-server-v-01.herokuapp.com/parts').then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }

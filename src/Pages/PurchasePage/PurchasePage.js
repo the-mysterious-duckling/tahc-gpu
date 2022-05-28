@@ -13,7 +13,7 @@ const PurchasePage = () => {
 
     const { id } = useParams();
 
-    const { data: product, isLoading } = useQuery('product', () => fetch(`http://localhost:1000/parts/${id}`).then(res => res.json()))
+    const { data: product, isLoading } = useQuery('product', () => fetch(`https://tahc-server-v-01.herokuapp.com/parts/${id}`).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -40,7 +40,7 @@ const PurchasePage = () => {
             quantity: quantity,
             itemName: product.name,
         }
-        fetch('http://localhost:1000/bookings', {
+        fetch('https://tahc-server-v-01.herokuapp.com/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

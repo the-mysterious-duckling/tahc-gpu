@@ -18,7 +18,7 @@ const MyOrders = () => {
     const [bookingDelete, setBookingDelete] = useState(null);
 
     const { data: bookings, isLoading, refetch } = useQuery('bookings', () =>
-        fetch(`http://localhost:1000/bookings/${email}`, {
+        fetch(`https://tahc-server-v-01.herokuapp.com/bookings/${email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

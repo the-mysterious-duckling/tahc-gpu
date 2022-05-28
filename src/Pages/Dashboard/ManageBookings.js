@@ -3,8 +3,8 @@ import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
-const ManageProducts = () => {
-    const { data: parts, isLoading, refetch } = useQuery('parts', () => fetch('https://tahc-server-v-01.herokuapp.com/parts', {
+const ManageBookings = () => {
+    const { data: bookings, isLoading, refetch } = useQuery('bookings', () => fetch('https://tahc-server-v-01.herokuapp.com/bookings', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -13,8 +13,8 @@ const ManageProducts = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    const handleDelete = (part) => {
-        fetch(`https://tahc-server-v-01.herokuapp.com/parts/${part._id}`, {
+    const handleDelete = (booking) => {
+        fetch(`https://tahc-server-v-01.herokuapp.com/deleteidbooking/${booking._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -23,7 +23,7 @@ const ManageProducts = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
-                    toast.success(`Deleted ${part.name} from Database`)
+                    toast.success(`Deleted ${booking.itemName} Booking from  Database`)
                     refetch()
                 }
                 else {
@@ -42,20 +42,22 @@ const ManageProducts = () => {
                             <th></th>
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Quantity</th>
                             <th>Option</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            parts.map(
-                                (part, index) =>
+                            bookings.map(
+                                (b, index) =>
                                     <tr>
                                         <th>{index + 1}</th>
+                                        <td>{b.user}</td>
+                                        <td>{b.itemName}</td>
+                                        <td>{b.quantity}</td>
                                         <td>
-                                            <img width={60} src={part.img} alt="gpu" />
+                                            <button onClick={() => handleDelete(b)} className='btn btn-xs'>Delete</button>
                                         </td>
-                                        <td>{part.name}</td>
-                                        <td><button onClick={() => handleDelete(part)} className='btn btn-xs'>Delete</button></td>
                                     </tr>)
                         }
                     </tbody>
@@ -65,4 +67,4 @@ const ManageProducts = () => {
     );
 };
 
-export default ManageProducts;
+export default ManageBookings;

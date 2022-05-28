@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import OneUser from './OneUser';
 
 const AllUsers = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:1000/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://tahc-server-v-01.herokuapp.com/users', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

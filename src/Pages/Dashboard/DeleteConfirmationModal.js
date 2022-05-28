@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 const DeleteConfirmationModal = ({ bookingDelete, refetch, setBookingDelete }) => {
     const { email } = bookingDelete
     const handleDelete = () => {
-        fetch(`http://localhost:1000/deletebooking/${email}`, {
+        fetch(`https://tahc-server-v-01.herokuapp.com/deletebooking/${email}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
             if (data.deletedCount > 0) {

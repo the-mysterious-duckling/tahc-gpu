@@ -21,7 +21,7 @@ const Portfolio = () => {
                 <div>
                     <h1 class="text-5xl font-bold">Hello, I am Ahnaf Warid</h1>
                     <p class="text-md font-bold my-2">Mail: corp.ahnafwarid@gmail.com</p>
-                    <p class="py-6 text-lg">I am currently a full time student doing my CSE degree from Brac University. I have a 4.0 cgpa and all of these projects with Programming Hero and github contributions are extra work after completing my studies to further boost my skills.</p>
+                    <p class="py-6 text-lg">I am currently doing my CSE degree from Brac University. All of these projects with Programming Hero and github contributions are extra work after completing my studies to further boost my skills.</p>
                     <p class="py-6 text-lg">Tech I use: React to build the client side of an application. Express, node to build the server</p>
                     <p class="pt-6 text-lg font-bold">Some other projects I made:
                     </p>
