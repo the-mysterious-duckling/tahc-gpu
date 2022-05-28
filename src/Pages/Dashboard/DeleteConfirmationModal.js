@@ -7,7 +7,6 @@ const DeleteConfirmationModal = ({ bookingDelete, refetch, setBookingDelete }) =
         fetch(`http://localhost:1000/deletebooking/${email}`, {
             method: 'DELETE'
         }).then(res => res.json()).then(data => {
-            console.log(data)
             if (data.deletedCount > 0) {
                 toast.success('Booking deleted')
                 refetch()

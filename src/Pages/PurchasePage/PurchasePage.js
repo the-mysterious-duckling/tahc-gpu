@@ -29,7 +29,7 @@ const PurchasePage = () => {
             return
         }
         if (data.target.phone.value.length !== 11) {
-            toast.error('Invalid Phone Number')
+            toast.error(`${data.target.phone.value} is invalid, number must be 11 digits!`)
             return
         }
         const booking = {

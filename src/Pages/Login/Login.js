@@ -29,7 +29,7 @@ const Login = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
-        toast.success(`You logged in with ${data.email} successfully!`)
+        toast.success(`You successfully logged in with ${data.email}!`)
     }
     const [token] = useToken(user || userG)
 

@@ -3,6 +3,17 @@ import toast from 'react-hot-toast';
 
 const OneUser = ({ user, index, refetch }) => {
     const { email, role } = user
+    const handleRemove = () => {
+        fetch(`http://localhost:1000/delete/user/${email}`, {
+            method: 'DELETE'
+        }).then(res => res.json()).then(data => {
+            if (data.deletedCount > 0) {
+                toast.success(`User with email ${email} removed from database`)
+                refetch()
+            }
+        })
+    }
+    /* Admin Handling */
     const makeAdmin = () => {
         fetch(`http://localhost:1000/user/admin/${email}`, {
             method: 'PUT',
@@ -28,7 +39,7 @@ const OneUser = ({ user, index, refetch }) => {
             <th>{index + 1}</th>
             <td>{email}</td>
             <td>{role !== 'admin' ? <button onClick={makeAdmin} className='btn btn-xs'>Make Admin</button> : 'Admin'}</td>
-            <td><button className='btn btn-xs btn-error'>Remove User</button></td>
+            <td><button onClick={handleRemove} className='btn btn-xs btn-error'>Remove User</button></td>
         </tr>
     );
 };

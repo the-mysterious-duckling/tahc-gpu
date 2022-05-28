@@ -5,14 +5,20 @@ import Loading from '../Shared/Loading';
 
 const ManageProducts = () => {
     const { data: parts, isLoading, refetch } = useQuery('parts', () => fetch('http://localhost:1000/parts', {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
     }).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
     const handleDelete = (part) => {
         fetch(`http://localhost:1000/parts/${part._id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

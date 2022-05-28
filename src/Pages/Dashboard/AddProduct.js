@@ -12,7 +12,12 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     // React query to load all the services name
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts').then(res => res.json()))
+    const { data: parts, isLoading } = useQuery('parts', () => fetch('http://localhost:1000/parts', {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -31,7 +36,8 @@ const AddProduct = () => {
         fetch('http://localhost:1000/parts', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(productData)
         })
