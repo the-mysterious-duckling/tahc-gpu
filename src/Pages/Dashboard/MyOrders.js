@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 import { FaSkullCrossbones, FaPaypal } from 'react-icons/fa';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import Dashboard from './Dashboard';
+import toast from 'react-hot-toast';
+import { signOut } from 'firebase/auth';
 
 const MyOrders = () => {
     const [user] = useAuthState(auth);
-    const { email } = user
+    const { email } = user;
+    const navigate = useNavigate();
 
     const [bookingDelete, setBookingDelete] = useState(null);
 
     const { data: bookings, isLoading, refetch } = useQuery('bookings', () =>
-        fetch(`http://localhost:1000/bookings/${email}`).then(res => res.json())
+        fetch(`http://localhost:1000/bookings/${email}`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => {
+            if (res.status == 401 || res.status == 403) {
+                toast.error('Access Rejected, Please Log in again');
+                navigate('/');
+                localStorage.removeItem('accessToken');
+                signOut(auth)
+            };
+            return res.json();
+        })
     )
 
     if (isLoading) {

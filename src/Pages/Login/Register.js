@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../CustomHooks/useToken';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -22,6 +23,14 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const [updateProfile, updating, upError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || userG);
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from])
+
     let errorMsg;
     if (error || errorG || upError) {
         errorMsg = <p className='text-red-500'>Error: {error?.message || errorG?.message || upError?.message}</p>
@@ -35,10 +44,6 @@ const Register = () => {
 
     if (loading || loadingG || updating) {
         return <Loading></Loading>
-    }
-
-    if (user || userG) {
-        navigate(from, { replace: true });
     }
 
     return (

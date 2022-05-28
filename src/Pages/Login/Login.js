@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../CustomHooks/useToken';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
@@ -30,10 +31,13 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password)
         toast.success(`You logged in with ${data.email} successfully!`)
     }
+    const [token] = useToken(user || userG)
 
-    if (user || userG) {
-        navigate(from, { replace: true });
-    }
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, navigate, from])
 
     if (loading || loadingG) {
         return <Loading></Loading>
