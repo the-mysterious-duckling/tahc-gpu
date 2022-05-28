@@ -38,7 +38,7 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {
-                    toast.success(`Added ${data.name}`)
+                    toast.success(`Added ${data.name} to database successfully!`)
                     reset()
                 }
                 else {

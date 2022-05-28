@@ -1,4 +1,5 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
@@ -10,7 +11,16 @@ const ManageProducts = () => {
         return <Loading></Loading>
     }
     const handleDelete = (part) => {
-        console.log(part)
+        fetch(`http://localhost:1000/parts/${part._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`Deleted ${part.name} from Database`)
+                    refetch()
+                }
+            })
     }
     return (
         <div>
