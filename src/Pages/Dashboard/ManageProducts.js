@@ -26,6 +26,9 @@ const ManageProducts = () => {
                     toast.success(`Deleted ${part.name} from Database`)
                     refetch()
                 }
+                else {
+                    toast.error('Unauthorized, please try logging in again')
+                }
             })
     }
     return (

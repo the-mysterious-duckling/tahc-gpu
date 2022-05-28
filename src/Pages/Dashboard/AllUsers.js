@@ -5,7 +5,10 @@ import OneUser from './OneUser';
 
 const AllUsers = () => {
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:1000/users', {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
     }).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
