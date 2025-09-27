@@ -12,3 +12,5 @@ Administrator: empowered to oversee, update, and manage stored data.
 Standard User: enabled to book, purchase, submit reviews, and interact with platform features.
 
 This project demonstrates the integration of modern web technologies to deliver a secure, scalable, and interactive single-page application.
+
+Server-side code: https://github.com/the-mysterious-duckling/server-tahc-gpu/
